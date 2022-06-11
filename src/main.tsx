@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import AppProvider from "~/providers";
-import { AppRoutes } from "~/routes";
+import AppRoutes from "~/routes";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

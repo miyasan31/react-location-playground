@@ -1,5 +1,6 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "@tanstack/react-location";
 
+import { Link } from "~/components/lib/Link";
 import { errorButton, successButton } from "~/constants/buttonColor";
 
 export const NestTwoPage = () => {

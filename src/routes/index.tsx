@@ -1,16 +1,21 @@
-import { useRoutes } from "react-router-dom";
+import { Outlet, ReactLocation, Router } from "@tanstack/react-location";
 
 import { useAuth } from "~/hooks/useAuth";
-import { commonRoutes } from "~/routes/common";
 import { privateRoutes } from "~/routes/private";
 import { publicRoutes } from "~/routes/public";
 
-export const AppRoutes = () => {
+const location = new ReactLocation();
+
+const AppRoutes = () => {
   const auth = useAuth();
 
   const routes = auth.isSignIn ? privateRoutes : publicRoutes;
 
-  const element = useRoutes([...routes, ...commonRoutes]);
-
-  return <>{element}</>;
+  return (
+    <Router routes={routes} location={location}>
+      <Outlet />
+    </Router>
+  );
 };
+
+export default AppRoutes;

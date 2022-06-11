@@ -1,11 +1,12 @@
+import { useMatch } from "@tanstack/react-location";
 import { useQuery } from "react-query";
-import { Link, useParams } from "react-router-dom";
 
+import { Link } from "~/components/lib/Link";
 import { successButton } from "~/constants/buttonColor";
 import type { IPost } from "~/interfaces/IPost";
 
 export const NestPostDetail = () => {
-  const { postId } = useParams();
+  const { postId } = useMatch().params;
   const { data } = useQuery<IPost, Error>(
     ["getPost", { postId }],
     () => fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`).then((res) => res.json()),

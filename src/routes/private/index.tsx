@@ -1,13 +1,16 @@
+import type { Route } from "@tanstack/react-location";
+import { Outlet } from "@tanstack/react-location";
+
 import { PrivateLayout } from "~/components/layout/PrivateLayout";
 import { MainPage } from "~/components/page/private/main.page";
-import { FetchProvider } from "~/components/provider/Fetch";
+import { commonRoutes } from "~/routes/common";
 
-export const privateRoutes = [
+export const privateRoutes: Route[] = [
   {
-    path: "",
+    path: "/",
     element: (
       <PrivateLayout>
-        <FetchProvider />
+        <Outlet />
       </PrivateLayout>
     ),
     children: [
@@ -15,6 +18,7 @@ export const privateRoutes = [
         path: "main",
         element: <MainPage />,
       },
+      ...commonRoutes,
     ],
   },
 ];

@@ -1,5 +1,5 @@
+import { Link } from "@tanstack/react-location";
 import type { FC, ReactNode } from "react";
-import { Link } from "react-router-dom";
 
 import { errorButton, successButton } from "~/constants/buttonColor";
 

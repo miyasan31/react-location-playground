@@ -3,7 +3,6 @@ import type { FC, ReactNode } from "react";
 import ErrorBoundaryProvider from "~/providers/error-boundary";
 import ReactHelmetProvider from "~/providers/react-helmet";
 import ReactQueryProvider from "~/providers/react-query";
-import ReactRouterProvider from "~/providers/react-router";
 import SuspenseProvider from "~/providers/suspense";
 
 type Props = {
@@ -16,9 +15,7 @@ const AppProvider: FC<Props> = ({ children }) => {
       <SuspenseProvider>
         <ReactHelmetProvider>
           <ReactQueryProvider>
-            <ReactRouterProvider>
-              <>{children}</>
-            </ReactRouterProvider>
+            <>{children}</>
           </ReactQueryProvider>
         </ReactHelmetProvider>
       </SuspenseProvider>

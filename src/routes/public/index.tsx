@@ -1,3 +1,6 @@
+import type { Route } from "@tanstack/react-location";
+import { Outlet } from "@tanstack/react-location";
+
 import { PublicLayout } from "~/components/layout/PublicLayout";
 import { AboutPage } from "~/components/page/public/about.page";
 import { NestOnePage } from "~/components/page/public/nest-one.page";
@@ -5,15 +8,16 @@ import { NestPostsPage } from "~/components/page/public/nest-posts.page";
 import { PostDetailPage } from "~/components/page/public/post-detail.page";
 import { PostListPage } from "~/components/page/public/posts.page";
 import { FetchProvider } from "~/components/provider/Fetch";
+import { commonRoutes } from "~/routes/common";
 import { nestOneRoutes } from "~/routes/public/nest-one";
 import { nestPostsRoutes } from "~/routes/public/nest-posts";
 
-export const publicRoutes = [
+export const publicRoutes: Route[] = [
   {
-    path: "",
+    path: "/",
     element: (
       <PublicLayout>
-        <FetchProvider />
+        <Outlet />
       </PublicLayout>
     ),
     children: [
@@ -23,22 +27,44 @@ export const publicRoutes = [
       },
       {
         path: "posts",
-        element: <PostListPage />,
-      },
-      {
-        path: "posts/:postId",
-        element: <PostDetailPage />,
+        children: [
+          {
+            path: "/",
+            element: (
+              <FetchProvider>
+                <PostListPage />
+              </FetchProvider>
+            ),
+          },
+          {
+            path: ":postId",
+            element: (
+              <FetchProvider>
+                <PostDetailPage />
+              </FetchProvider>
+            ),
+          },
+        ],
       },
       {
         path: "nest-one",
-        element: <NestOnePage />,
+        element: (
+          <FetchProvider>
+            <NestOnePage />
+          </FetchProvider>
+        ),
         children: [...nestOneRoutes],
       },
       {
         path: "nest-posts",
-        element: <NestPostsPage />,
+        element: (
+          <FetchProvider>
+            <NestPostsPage />
+          </FetchProvider>
+        ),
         children: [...nestPostsRoutes],
       },
+      ...commonRoutes,
     ],
   },
 ];

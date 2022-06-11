@@ -1,6 +1,7 @@
+import { Outlet } from "@tanstack/react-location";
 import { useQuery } from "react-query";
-import { Link, Outlet } from "react-router-dom";
 
+import { Link } from "~/components/lib/Link";
 import { successButton } from "~/constants/buttonColor";
 import type { IPost } from "~/interfaces/IPost";
 
