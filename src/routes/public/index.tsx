@@ -1,7 +1,7 @@
 import type { Route } from "@tanstack/react-location";
-import { Outlet } from "@tanstack/react-location";
 
 import { PublicLayout } from "~/components/layout/PublicLayout";
+import { Outlet } from "~/components/lib/Outlet";
 import { AboutPage } from "~/components/page/public/about.page";
 import { NestOnePage } from "~/components/page/public/nest-one.page";
 import { NestPostsPage } from "~/components/page/public/nest-posts.page";

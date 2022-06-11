@@ -1,5 +1,6 @@
-import { Outlet, ReactLocation, Router } from "@tanstack/react-location";
+import { ReactLocation, Router } from "@tanstack/react-location";
 
+import { Outlet } from "~/components/lib/Outlet";
 import { useAuth } from "~/hooks/useAuth";
 import { privateRoutes } from "~/routes/private";
 import { publicRoutes } from "~/routes/public";

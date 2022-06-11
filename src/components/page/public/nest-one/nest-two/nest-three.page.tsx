@@ -1,6 +1,5 @@
-import { Outlet } from "@tanstack/react-location";
-
 import { Link } from "~/components/lib/Link";
+import { Outlet } from "~/components/lib/Outlet";
 import { successButton } from "~/constants/buttonColor";
 
 export const NestThreePage = () => {
